@@ -43,7 +43,21 @@ blog.get('/bulk',async (c) => {
         }).$extends(withAccelerate())
 
         try {
-            const posts = await prisma.post.findMany()
+            const posts = await prisma.post.findMany({
+                select: {
+                    id: true,
+                    title: true,
+                    subtitle: true,
+                    content: true,
+                    tags: true,
+                    publishedAt: true,
+                    author: {
+                        select: {
+                            name : true,
+                        }
+                    }
+                }
+            })
             return c.json({ posts: posts })
         } catch (error) {
             c.status(403);
@@ -61,7 +75,21 @@ blog.get('/:id',async (c) => {
       const post = await prisma.post.findUnique({
         where: {
           id: id
-        }})
+        },
+        select: {
+            id: true,
+            title: true,
+            subtitle: true,
+            content: true,
+            tags: true,
+            publishedAt: true,
+            author: {
+                select: {
+                    name : true,
+                }
+            }
+        }
+      })
         return c.json({ post: post })
   } catch (error) {
     c.status(403);
@@ -85,7 +113,9 @@ blog.post('/',async (c) => {
         const post = await prisma.post.create({
             data: {
                 title: body.title,
+                subtitle: body.subtitle,
                 content: body.content,
+                tags: body.tags,
                 authorId: c.get('userId')
             }
         })

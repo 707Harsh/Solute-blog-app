@@ -27,8 +27,11 @@ model User {
 model Post {
   id        String   @id @default(uuid())
   title     String
+  subtitle  String   @default("")
   content   String
+  tags      String[] @default([])
   published Boolean  @default(false)
+  publishedAt DateTime? @default(now())
   author    User     @relation(fields: [authorId], references: [id])
   authorId  String
 }

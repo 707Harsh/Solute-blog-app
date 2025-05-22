@@ -2060,24 +2060,31 @@ export namespace Prisma {
   export type PostMinAggregateOutputType = {
     id: string | null
     title: string | null
+    subtitle: string | null
     content: string | null
     published: boolean | null
+    publishedAt: Date | null
     authorId: string | null
   }
 
   export type PostMaxAggregateOutputType = {
     id: string | null
     title: string | null
+    subtitle: string | null
     content: string | null
     published: boolean | null
+    publishedAt: Date | null
     authorId: string | null
   }
 
   export type PostCountAggregateOutputType = {
     id: number
     title: number
+    subtitle: number
     content: number
+    tags: number
     published: number
+    publishedAt: number
     authorId: number
     _all: number
   }
@@ -2086,24 +2093,31 @@ export namespace Prisma {
   export type PostMinAggregateInputType = {
     id?: true
     title?: true
+    subtitle?: true
     content?: true
     published?: true
+    publishedAt?: true
     authorId?: true
   }
 
   export type PostMaxAggregateInputType = {
     id?: true
     title?: true
+    subtitle?: true
     content?: true
     published?: true
+    publishedAt?: true
     authorId?: true
   }
 
   export type PostCountAggregateInputType = {
     id?: true
     title?: true
+    subtitle?: true
     content?: true
+    tags?: true
     published?: true
+    publishedAt?: true
     authorId?: true
     _all?: true
   }
@@ -2183,8 +2197,11 @@ export namespace Prisma {
   export type PostGroupByOutputType = {
     id: string
     title: string
+    subtitle: string
     content: string
+    tags: string[]
     published: boolean
+    publishedAt: Date | null
     authorId: string
     _count: PostCountAggregateOutputType | null
     _min: PostMinAggregateOutputType | null
@@ -2208,8 +2225,11 @@ export namespace Prisma {
   export type PostSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
+    subtitle?: boolean
     content?: boolean
+    tags?: boolean
     published?: boolean
+    publishedAt?: boolean
     authorId?: boolean
     author?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["post"]>
@@ -2217,8 +2237,11 @@ export namespace Prisma {
   export type PostSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
+    subtitle?: boolean
     content?: boolean
+    tags?: boolean
     published?: boolean
+    publishedAt?: boolean
     authorId?: boolean
     author?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["post"]>
@@ -2226,8 +2249,11 @@ export namespace Prisma {
   export type PostSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
+    subtitle?: boolean
     content?: boolean
+    tags?: boolean
     published?: boolean
+    publishedAt?: boolean
     authorId?: boolean
     author?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["post"]>
@@ -2235,12 +2261,15 @@ export namespace Prisma {
   export type PostSelectScalar = {
     id?: boolean
     title?: boolean
+    subtitle?: boolean
     content?: boolean
+    tags?: boolean
     published?: boolean
+    publishedAt?: boolean
     authorId?: boolean
   }
 
-  export type PostOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "content" | "published" | "authorId", ExtArgs["result"]["post"]>
+  export type PostOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "subtitle" | "content" | "tags" | "published" | "publishedAt" | "authorId", ExtArgs["result"]["post"]>
   export type PostInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     author?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -2259,8 +2288,11 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       title: string
+      subtitle: string
       content: string
+      tags: string[]
       published: boolean
+      publishedAt: Date | null
       authorId: string
     }, ExtArgs["result"]["post"]>
     composites: {}
@@ -2688,8 +2720,11 @@ export namespace Prisma {
   interface PostFieldRefs {
     readonly id: FieldRef<"Post", 'String'>
     readonly title: FieldRef<"Post", 'String'>
+    readonly subtitle: FieldRef<"Post", 'String'>
     readonly content: FieldRef<"Post", 'String'>
+    readonly tags: FieldRef<"Post", 'String[]'>
     readonly published: FieldRef<"Post", 'Boolean'>
+    readonly publishedAt: FieldRef<"Post", 'DateTime'>
     readonly authorId: FieldRef<"Post", 'String'>
   }
     
@@ -3132,8 +3167,11 @@ export namespace Prisma {
   export const PostScalarFieldEnum: {
     id: 'id',
     title: 'title',
+    subtitle: 'subtitle',
     content: 'content',
+    tags: 'tags',
     published: 'published',
+    publishedAt: 'publishedAt',
     authorId: 'authorId'
   };
 
@@ -3187,6 +3225,20 @@ export namespace Prisma {
    * Reference to a field of type 'Boolean'
    */
   export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
+   * Reference to a field of type 'DateTime'
+   */
+  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+  /**
+   * Reference to a field of type 'DateTime[]'
+   */
+  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
     
 
 
@@ -3263,8 +3315,11 @@ export namespace Prisma {
     NOT?: PostWhereInput | PostWhereInput[]
     id?: StringFilter<"Post"> | string
     title?: StringFilter<"Post"> | string
+    subtitle?: StringFilter<"Post"> | string
     content?: StringFilter<"Post"> | string
+    tags?: StringNullableListFilter<"Post">
     published?: BoolFilter<"Post"> | boolean
+    publishedAt?: DateTimeNullableFilter<"Post"> | Date | string | null
     authorId?: StringFilter<"Post"> | string
     author?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
@@ -3272,8 +3327,11 @@ export namespace Prisma {
   export type PostOrderByWithRelationInput = {
     id?: SortOrder
     title?: SortOrder
+    subtitle?: SortOrder
     content?: SortOrder
+    tags?: SortOrder
     published?: SortOrder
+    publishedAt?: SortOrderInput | SortOrder
     authorId?: SortOrder
     author?: UserOrderByWithRelationInput
   }
@@ -3284,8 +3342,11 @@ export namespace Prisma {
     OR?: PostWhereInput[]
     NOT?: PostWhereInput | PostWhereInput[]
     title?: StringFilter<"Post"> | string
+    subtitle?: StringFilter<"Post"> | string
     content?: StringFilter<"Post"> | string
+    tags?: StringNullableListFilter<"Post">
     published?: BoolFilter<"Post"> | boolean
+    publishedAt?: DateTimeNullableFilter<"Post"> | Date | string | null
     authorId?: StringFilter<"Post"> | string
     author?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
@@ -3293,8 +3354,11 @@ export namespace Prisma {
   export type PostOrderByWithAggregationInput = {
     id?: SortOrder
     title?: SortOrder
+    subtitle?: SortOrder
     content?: SortOrder
+    tags?: SortOrder
     published?: SortOrder
+    publishedAt?: SortOrderInput | SortOrder
     authorId?: SortOrder
     _count?: PostCountOrderByAggregateInput
     _max?: PostMaxOrderByAggregateInput
@@ -3307,8 +3371,11 @@ export namespace Prisma {
     NOT?: PostScalarWhereWithAggregatesInput | PostScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Post"> | string
     title?: StringWithAggregatesFilter<"Post"> | string
+    subtitle?: StringWithAggregatesFilter<"Post"> | string
     content?: StringWithAggregatesFilter<"Post"> | string
+    tags?: StringNullableListFilter<"Post">
     published?: BoolWithAggregatesFilter<"Post"> | boolean
+    publishedAt?: DateTimeNullableWithAggregatesFilter<"Post"> | Date | string | null
     authorId?: StringWithAggregatesFilter<"Post"> | string
   }
 
@@ -3368,55 +3435,76 @@ export namespace Prisma {
   export type PostCreateInput = {
     id?: string
     title: string
+    subtitle?: string
     content: string
+    tags?: PostCreatetagsInput | string[]
     published?: boolean
+    publishedAt?: Date | string | null
     author: UserCreateNestedOneWithoutPostsInput
   }
 
   export type PostUncheckedCreateInput = {
     id?: string
     title: string
+    subtitle?: string
     content: string
+    tags?: PostCreatetagsInput | string[]
     published?: boolean
+    publishedAt?: Date | string | null
     authorId: string
   }
 
   export type PostUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    subtitle?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
+    tags?: PostUpdatetagsInput | string[]
     published?: BoolFieldUpdateOperationsInput | boolean
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     author?: UserUpdateOneRequiredWithoutPostsNestedInput
   }
 
   export type PostUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    subtitle?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
+    tags?: PostUpdatetagsInput | string[]
     published?: BoolFieldUpdateOperationsInput | boolean
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     authorId?: StringFieldUpdateOperationsInput | string
   }
 
   export type PostCreateManyInput = {
     id?: string
     title: string
+    subtitle?: string
     content: string
+    tags?: PostCreatetagsInput | string[]
     published?: boolean
+    publishedAt?: Date | string | null
     authorId: string
   }
 
   export type PostUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    subtitle?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
+    tags?: PostUpdatetagsInput | string[]
     published?: BoolFieldUpdateOperationsInput | boolean
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type PostUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    subtitle?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
+    tags?: PostUpdatetagsInput | string[]
     published?: BoolFieldUpdateOperationsInput | boolean
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     authorId?: StringFieldUpdateOperationsInput | string
   }
 
@@ -3522,9 +3610,28 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
+  export type StringNullableListFilter<$PrismaModel = never> = {
+    equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    has?: string | StringFieldRefInput<$PrismaModel> | null
+    hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
+    hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
+    isEmpty?: boolean
+  }
+
   export type BoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
   export type UserScalarRelationFilter = {
@@ -3535,24 +3642,31 @@ export namespace Prisma {
   export type PostCountOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
+    subtitle?: SortOrder
     content?: SortOrder
+    tags?: SortOrder
     published?: SortOrder
+    publishedAt?: SortOrder
     authorId?: SortOrder
   }
 
   export type PostMaxOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
+    subtitle?: SortOrder
     content?: SortOrder
     published?: SortOrder
+    publishedAt?: SortOrder
     authorId?: SortOrder
   }
 
   export type PostMinOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
+    subtitle?: SortOrder
     content?: SortOrder
     published?: SortOrder
+    publishedAt?: SortOrder
     authorId?: SortOrder
   }
 
@@ -3562,6 +3676,20 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type PostCreateNestedManyWithoutAuthorInput = {
@@ -3614,14 +3742,27 @@ export namespace Prisma {
     deleteMany?: PostScalarWhereInput | PostScalarWhereInput[]
   }
 
+  export type PostCreatetagsInput = {
+    set: string[]
+  }
+
   export type UserCreateNestedOneWithoutPostsInput = {
     create?: XOR<UserCreateWithoutPostsInput, UserUncheckedCreateWithoutPostsInput>
     connectOrCreate?: UserCreateOrConnectWithoutPostsInput
     connect?: UserWhereUniqueInput
   }
 
+  export type PostUpdatetagsInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
   export type BoolFieldUpdateOperationsInput = {
     set?: boolean
+  }
+
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
   }
 
   export type UserUpdateOneRequiredWithoutPostsNestedInput = {
@@ -3721,6 +3862,17 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
   export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
@@ -3729,18 +3881,38 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
   export type PostCreateWithoutAuthorInput = {
     id?: string
     title: string
+    subtitle?: string
     content: string
+    tags?: PostCreatetagsInput | string[]
     published?: boolean
+    publishedAt?: Date | string | null
   }
 
   export type PostUncheckedCreateWithoutAuthorInput = {
     id?: string
     title: string
+    subtitle?: string
     content: string
+    tags?: PostCreatetagsInput | string[]
     published?: boolean
+    publishedAt?: Date | string | null
   }
 
   export type PostCreateOrConnectWithoutAuthorInput = {
@@ -3775,8 +3947,11 @@ export namespace Prisma {
     NOT?: PostScalarWhereInput | PostScalarWhereInput[]
     id?: StringFilter<"Post"> | string
     title?: StringFilter<"Post"> | string
+    subtitle?: StringFilter<"Post"> | string
     content?: StringFilter<"Post"> | string
+    tags?: StringNullableListFilter<"Post">
     published?: BoolFilter<"Post"> | boolean
+    publishedAt?: DateTimeNullableFilter<"Post"> | Date | string | null
     authorId?: StringFilter<"Post"> | string
   }
 
@@ -3827,29 +4002,41 @@ export namespace Prisma {
   export type PostCreateManyAuthorInput = {
     id?: string
     title: string
+    subtitle?: string
     content: string
+    tags?: PostCreatetagsInput | string[]
     published?: boolean
+    publishedAt?: Date | string | null
   }
 
   export type PostUpdateWithoutAuthorInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    subtitle?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
+    tags?: PostUpdatetagsInput | string[]
     published?: BoolFieldUpdateOperationsInput | boolean
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type PostUncheckedUpdateWithoutAuthorInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    subtitle?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
+    tags?: PostUpdatetagsInput | string[]
     published?: BoolFieldUpdateOperationsInput | boolean
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type PostUncheckedUpdateManyWithoutAuthorInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    subtitle?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
+    tags?: PostUpdatetagsInput | string[]
     published?: BoolFieldUpdateOperationsInput | boolean
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
 

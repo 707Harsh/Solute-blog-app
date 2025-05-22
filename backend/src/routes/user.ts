@@ -29,12 +29,12 @@ user.post('/signup',async (c) => {
       data: {
         email: body.email,
         password: body.password,
-        name: body.name? body.name : "",
+        name: body.name? body.name : "Anonymous",
       }})
   
     const token  =  await sign({id : user.id}, c.env.JWT_SECRET)
   
-    return c.json({ jwt : token })
+    return c.json({ jwt : token, name : user.name })
 
   } catch (error : any) {
     c.status(403);
@@ -74,7 +74,7 @@ user.post('/signin',async (c) => {
       }
     
       const token = await sign({id : user.id}, c.env.JWT_SECRET)
-      return c.json({ jwt : token })
+      return c.json({ jwt : token, name : user.name })
   } catch (error : any) {
     c.status(403);
     return c.json({ "msg": "error during signing in" })
