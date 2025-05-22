@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 interface BlogCardProps {
     id: string;
     name: string;
@@ -10,9 +12,7 @@ interface BlogCardProps {
 
 export const BlogCard = ({ id, name, title, subtitle, content, tags, publishedAt }: BlogCardProps) => {
 
-    const handleClick = () => {
-        window.location.href = `/blog/${id}`;
-    };
+    const navigate = useNavigate();
 
     const date = new Date(publishedAt)
 
@@ -34,7 +34,7 @@ export const BlogCard = ({ id, name, title, subtitle, content, tags, publishedAt
     const minutes = estimateReadTimeFromHtml(content)
 
     return (
-        <div onClick={handleClick} className="max-w-4xl mx-auto border-b py-6 px-4 cursor-pointer hover:bg-gray-50 transition duration-200 ease-in-out">
+        <div onClick={()=>navigate(`/blog/${id}`)} className="max-w-4xl mx-auto border-b py-6 px-4 cursor-pointer hover:bg-gray-50 transition duration-200 ease-in-out">
             {/* Top section with avatar, author and meta info */}
             <div className="flex items-center text-sm text-gray-500 mb-2">
 

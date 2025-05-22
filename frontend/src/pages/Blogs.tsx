@@ -62,7 +62,7 @@ export const Blogs = () => {
             ))}
 
             {/* Pagination Controls */}
-            <div className="flex justify-center items-center gap-4 mt-6">
+            <div className="flex justify-center items-center gap-4 my-6">
                 <button
                     onClick={handlePrev}
                     disabled={currentPage === 1}
