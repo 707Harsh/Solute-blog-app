@@ -28,15 +28,15 @@ Solute is a full-stack blogging platform built with cutting-edge technologies fo
 ## 📌 Features
 
 ### ✅ Implemented
--  User authentication (signup & login)
--  JWT-based secure API authorization
--  Schema validation using Zod
--  Rich text blog editor using Jodit
--  Blogging dashboard with:
+- ✅ User authentication (signup & login)
+- ✅ JWT-based secure API authorization
+- ✅ Schema validation using Zod
+- ✅ Rich text blog editor using Jodit
+- ✅ Blogging dashboard with:
   - Create, publish, and read blogs
   - Tagging and categorization
   - Read-time estimation and subtitle support
-- Prisma-backed PostgreSQL database for blog and user data
+- ✅ Prisma-backed PostgreSQL database for blog and user data
 
 ---
 
@@ -49,7 +49,7 @@ Solute is a full-stack blogging platform built with cutting-edge technologies fo
 
 ## 🌍 Deployment
 - Frontend build optimized with Vite and deployed on Vercel.
-- Cloudflare Workers used for scalable, edge-backend delivery.
+- Cloudflare Workers used for scalable, edge-backend delivery
 
 ---
 
